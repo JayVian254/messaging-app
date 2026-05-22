@@ -15,25 +15,25 @@
 
 <body>
 
-<div class="topbar">
+<div class="message-controls">
 
   <button
-    class="menu-btn"
-    onclick="goBack()"
+    id="sentBtn"
+    class="type-btn active"
+    onclick="setMessageType('sent')"
   >
-    ←
+    Sent
   </button>
 
-  <h3 id="chatName"></h3>
-
-  <div></div>
+  <button
+    id="receivedBtn"
+    class="type-btn"
+    onclick="setMessageType('received')"
+  >
+    Received
+  </button>
 
 </div>
-
-<div
-  class="messages"
-  id="messages"
-></div>
 
 <div class="input-area">
 
