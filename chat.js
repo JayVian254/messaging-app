@@ -102,3 +102,30 @@ function goBack() {
 }
 
 renderMessages();
+function setMessageType(type) {
+
+  currentType = type;
+
+  document
+    .getElementById("sentBtn")
+    .classList.remove("active");
+
+  document
+    .getElementById("receivedBtn")
+    .classList.remove("active");
+
+  if (type === "sent") {
+
+    document
+      .getElementById("sentBtn")
+      .classList.add("active");
+
+  } else {
+
+    document
+      .getElementById("receivedBtn")
+      .classList.add("active");
+
+  }
+
+}
