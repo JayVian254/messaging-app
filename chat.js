@@ -24,33 +24,27 @@ function renderMessages() {
     const div =
       document.createElement("div");
 
-    div.style.maxWidth = "70%";
-    div.style.padding = "10px";
-    div.style.marginBottom = "10px";
-    div.style.borderRadius = "10px";
-
-    if (msg.type === "sent") {
-
-      div.style.background = "#00c853";
-      div.style.marginLeft = "auto";
-
-    } else {
-
-      div.style.background = "#333";
-
-    }
+    div.className =
+      `message ${msg.type}`;
 
     div.innerHTML = `
-      <div>${msg.text}</div>
 
-      <small>
+      <div>
+        ${msg.text}
+      </div>
+
+      <div class="message-time">
         ${msg.time}
-      </small>
+      </div>
+
     `;
 
     messagesDiv.appendChild(div);
 
   });
+
+  messagesDiv.scrollTop =
+    messagesDiv.scrollHeight;
 
 }
 
@@ -58,10 +52,13 @@ function getTime() {
 
   const now = new Date();
 
-  return now.toLocaleTimeString([], {
-    hour: "2-digit",
-    minute: "2-digit"
-  });
+  return now.toLocaleTimeString(
+    [],
+    {
+      hour: "2-digit",
+      minute: "2-digit"
+    }
+  );
 
 }
 
@@ -93,12 +90,14 @@ function sendMessage() {
   input.value = "";
 
   renderMessages();
+
 }
 
 function goBack() {
 
   window.location.href =
     "index.html";
+
 }
 
 renderMessages();
