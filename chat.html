@@ -1,54 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
+
   <title>Chat</title>
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
   <link rel="stylesheet" href="style.css">
+
 </head>
+
 <body>
 
 <div class="topbar">
 
-  <button onclick="goBack()">
+  <button
+    class="menu-btn"
+    onclick="goBack()"
+  >
     ←
   </button>
 
-  <h2 id="chatName"></h2>
+  <h3 id="chatName"></h3>
+
+  <div></div>
 
 </div>
 
 <div
+  class="messages"
   id="messages"
-  style="
-    padding:15px;
-    height:75vh;
-    overflow-y:auto;
-  "
 ></div>
 
-<div
-  style="
-    display:flex;
-    padding:10px;
-    gap:10px;
-  "
->
+<div class="input-area">
 
   <input
-    id="messageInput"
     type="text"
-    placeholder="Type message"
-    style="
-      flex:1;
-      padding:10px;
-    "
+    id="messageInput"
+    placeholder="Type a message"
   >
 
   <button onclick="sendMessage()">
-    Send
+    ➤
   </button>
 
 </div>
 
 <script src="chat.js"></script>
+
 </body>
 </html>
