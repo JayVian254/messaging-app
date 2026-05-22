@@ -1,3 +1,4 @@
+let currentType = "sent";
 let chats =
   JSON.parse(localStorage.getItem("chats"))
   || [];
