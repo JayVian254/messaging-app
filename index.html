@@ -2,20 +2,58 @@
 <html>
 <head>
   <title>FakeChat</title>
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
   <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <div class="topbar">
+
   <h2>Chats</h2>
 
-  <button onclick="addChat()">
-    +
-  </button>
+  <div class="top-actions">
+
+    <button
+      class="add-btn"
+      onclick="addChat()"
+    >
+      +
+    </button>
+
+    <button
+      class="menu-btn"
+      onclick="toggleMenu()"
+    >
+      ⋮
+    </button>
+
+  </div>
+
+</div>
+
+<div
+  id="dropdownMenu"
+  class="dropdown hidden"
+>
+
+  <div
+    class="dropdown-item"
+    onclick="goToSettings()"
+  >
+    ⚙ Settings
+  </div>
+
 </div>
 
 <div id="chatList"></div>
 
 <script src="script.js"></script>
+
 </body>
 </html>
