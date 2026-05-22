@@ -3,10 +3,12 @@ let chats =
   || [];
 
 function saveChats() {
+
   localStorage.setItem(
     "chats",
     JSON.stringify(chats)
   );
+
 }
 
 function renderChats() {
@@ -18,7 +20,7 @@ function renderChats() {
 
   chats.forEach((chat, index) => {
 
-    let lastMessage = "No messages";
+    let lastMessage = "No messages yet";
     let lastTime = "";
 
     if (chat.messages.length > 0) {
@@ -38,23 +40,31 @@ function renderChats() {
     div.className = "chat-item";
 
     div.innerHTML = `
+
       <div class="profile">
-        ${chat.name[0]}
+        ${chat.name[0].toUpperCase()}
       </div>
 
-      <div class="chat-info">
-        <div class="chat-name">
-          ${chat.name}
+      <div class="chat-content">
+
+        <div class="chat-top">
+
+          <div class="chat-name">
+            ${chat.name}
+          </div>
+
+          <div class="chat-time">
+            ${lastTime}
+          </div>
+
         </div>
 
         <div class="last-message">
           ${lastMessage}
         </div>
+
       </div>
 
-      <div class="time">
-        ${lastTime}
-      </div>
     `;
 
     div.onclick = () => {
@@ -77,7 +87,7 @@ function renderChats() {
 function addChat() {
 
   const name =
-    prompt("Enter contact name");
+    prompt("Contact name");
 
   if (!name) return;
 
@@ -87,7 +97,24 @@ function addChat() {
   });
 
   saveChats();
+
   renderChats();
+
+}
+
+function toggleMenu() {
+
+  document
+    .getElementById("dropdownMenu")
+    .classList.toggle("hidden");
+
+}
+
+function goToSettings() {
+
+  window.location.href =
+    "settings.html";
+
 }
 
 renderChats();
