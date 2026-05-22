@@ -243,3 +243,40 @@ body {
   }
 
 }
+/* MESSAGE TYPE BUTTONS */
+
+.message-controls {
+
+  display: flex;
+
+  gap: 10px;
+
+  padding: 10px;
+
+  background: #111b21;
+
+}
+
+.type-btn {
+
+  flex: 1;
+
+  padding: 10px;
+
+  border: none;
+
+  border-radius: 20px;
+
+  background: #2a3942;
+
+  color: white;
+
+  cursor: pointer;
+
+}
+
+.type-btn.active {
+
+  background: #00a884;
+
+  }
