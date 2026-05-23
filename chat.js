@@ -26,8 +26,11 @@ function renderMessages() {
       document.createElement("div");
 
     div.className =
-      `message ${msg.type}`;
-
+  `message ${
+    msg.sender === "me"
+    ? "sent"
+    : "received"
+  }`;
     div.innerHTML = `
 
       <div>
