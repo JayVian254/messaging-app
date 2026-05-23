@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+  <title>Simulation Tools</title>
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<div class="topbar">
+
+  <button
+    class="menu-btn"
+    onclick="goBack()"
+  >
+    ←
+  </button>
+
+  <h3>Simulation Tools</h3>
+
+  <div></div>
+
+</div>
+
+<div style="padding:20px;">
+
+  <select
+    id="contactSelect"
+    style="
+      width:100%;
+      padding:12px;
+      margin-bottom:15px;
+      border-radius:10px;
+      border:none;
+      background:#2a3942;
+      color:white;
+    "
+  ></select>
+
+  <textarea
+    id="incomingMessage"
+    placeholder="Incoming message..."
+    style="
+      width:100%;
+      height:120px;
+      padding:15px;
+      border:none;
+      border-radius:10px;
+      background:#2a3942;
+      color:white;
+      resize:none;
+    "
+  ></textarea>
+
+  <button
+    onclick="sendIncomingMessage()"
+    style="
+      margin-top:15px;
+      width:100%;
+      padding:15px;
+      border:none;
+      border-radius:10px;
+      background:#00a884;
+      color:white;
+      font-size:16px;
+    "
+  >
+    Inject Incoming Message
+  </button>
+
+</div>
+
+<script src="simulation.js"></script>
+
+</body>
+</html>
