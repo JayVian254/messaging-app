@@ -1,4 +1,4 @@
-localStorage.clear();
+
 let chats =
   JSON.parse(localStorage.getItem("chats"));
 
