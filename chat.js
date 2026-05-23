@@ -44,7 +44,7 @@ function renderMessages() {
   </span>
 
   ${
-    msg.type === "sent"
+    msg.sender === "me"
     ?
     `<span class="message-status ${msg.status}">
       ${
