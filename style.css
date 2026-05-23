@@ -148,14 +148,21 @@ body {
 /* CHAT LIST */
 
 .chat-item {
+
   display: flex;
+
   align-items: center;
+
+  width: 100%;
 
   padding: 14px 15px;
 
   border-bottom: 1px solid #1f2c34;
 
   cursor: pointer;
+
+  overflow: hidden;
+
 }
 
 .chat-item:hover {
@@ -183,7 +190,11 @@ body {
 }
 
 .chat-content {
+
   flex: 1;
+
+  min-width: 0;
+
 }
 
 .chat-top {
@@ -203,14 +214,21 @@ body {
 }
 
 .last-message {
+
   font-size: 14px;
+
   opacity: 0.75;
 
   margin-top: 4px;
 
-  white-space: nowrap;
   overflow: hidden;
+
+  white-space: nowrap;
+
   text-overflow: ellipsis;
+
+  width: 100%;
+
 }
 
 /* CHAT SCREEN */
