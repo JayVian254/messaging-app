@@ -280,3 +280,36 @@ body {
   background: #00a884;
 
   }
+/* MESSAGE FOOTER */
+
+.message-footer {
+
+  display: flex;
+
+  justify-content: flex-end;
+
+  align-items: center;
+
+  gap: 5px;
+
+  margin-top: 5px;
+
+}
+
+.message-status {
+
+  font-size: 12px;
+
+}
+
+.message-status.sent {
+  color: white;
+}
+
+.message-status.delivered {
+  color: white;
+}
+
+.message-status.read {
+  color: #53bdeb;
+}
