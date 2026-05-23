@@ -4,3 +4,10 @@ function goBack() {
     "index.html";
 
 }
+
+function openSimulationTools() {
+
+  window.location.href =
+    "simulation.html";
+
+}
