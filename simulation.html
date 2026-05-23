@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,50 +31,68 @@
 
 </div>
 
-<div style="padding:20px;">
+<div class="simulation-container">
 
-  <select
-    id="contactSelect"
-    style="
-      width:100%;
-      padding:12px;
-      margin-bottom:15px;
-      border-radius:10px;
-      border:none;
-      background:#2a3942;
-      color:white;
-    "
-  ></select>
+  <label>
+    Sender
+  </label>
+
+  <select id="contactSelect">
+
+  </select>
+
+  <label>
+    Incoming Message
+  </label>
 
   <textarea
     id="incomingMessage"
-    placeholder="Incoming message..."
-    style="
-      width:100%;
-      height:120px;
-      padding:15px;
-      border:none;
-      border-radius:10px;
-      background:#2a3942;
-      color:white;
-      resize:none;
-    "
+    placeholder="Type incoming message..."
   ></textarea>
 
-  <button
-    onclick="sendIncomingMessage()"
-    style="
-      margin-top:15px;
-      width:100%;
-      padding:15px;
-      border:none;
-      border-radius:10px;
-      background:#00a884;
-      color:white;
-      font-size:16px;
-    "
+  <label>
+    Timestamp
+  </label>
+
+  <div class="time-options">
+
+    <label>
+
+      <input
+        type="radio"
+        name="timeMode"
+        value="current"
+        checked
+      >
+
+      Current Time
+
+    </label>
+
+    <label>
+
+      <input
+        type="radio"
+        name="timeMode"
+        value="custom"
+      >
+
+      Custom Time
+
+    </label>
+
+  </div>
+
+  <input
+    type="time"
+    id="customTime"
   >
-    Inject Incoming Message
+
+  <button
+    class="inject-btn"
+    onclick="injectMessage()"
+  >
+    Inject Message
   </button>
 
 </div>
