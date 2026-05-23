@@ -1,3 +1,4 @@
+
 let chats =
   JSON.parse(localStorage.getItem("chats"))
   || [];
@@ -73,14 +74,24 @@ function getCustomTime() {
 function injectMessage() {
 
   const selectedChat =
-    contactSelect.value;
+    Number(
+      contactSelect.value
+    );
 
   const messageText =
     document.getElementById(
       "incomingMessage"
     ).value.trim();
 
-  if (!messageText) return;
+  if (!messageText) {
+
+    alert(
+      "Please enter a message."
+    );
+
+    return;
+
+  }
 
   const timeMode =
     document.querySelector(
