@@ -118,3 +118,4 @@ function goToSettings() {
 }
 
 renderChats();
+localStorage.clear();
