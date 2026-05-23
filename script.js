@@ -1,6 +1,45 @@
 let chats =
-  JSON.parse(localStorage.getItem("chats"))
-  || [];
+  JSON.parse(localStorage.getItem("chats"));
+
+if (!chats) {
+
+  chats = [
+
+    {
+      name: "MPESA",
+
+      canReply: false,
+
+      messages: [
+        {
+          text:
+            "Welcome to MPESA.",
+
+          sender: "them",
+
+          time: "09:10 AM",
+
+          status: "delivered"
+        }
+      ]
+    },
+
+    {
+      name: "Alex",
+
+      canReply: true,
+
+      messages: []
+    }
+
+  ];
+
+  localStorage.setItem(
+    "chats",
+    JSON.stringify(chats)
+  );
+
+}
 
 function saveChats() {
 
