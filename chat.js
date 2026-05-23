@@ -34,9 +34,28 @@ function renderMessages() {
         ${msg.text}
       </div>
 
-      <div class="message-time">
-        ${msg.time}
-      </div>
+      <div class="message-footer">
+
+  <span class="message-time">
+    ${msg.time}
+  </span>
+
+  ${
+    msg.type === "sent"
+    ?
+    `<span class="message-status ${msg.status}">
+      ${
+        msg.status === "sent"
+        ? "•"
+        :
+        "••"
+      }
+    </span>`
+    :
+    ""
+  }
+
+</div>
 
     `;
 
