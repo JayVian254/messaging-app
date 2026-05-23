@@ -1,10 +1,12 @@
-let currentType = "sent";
+
 let chats =
   JSON.parse(localStorage.getItem("chats"))
   || [];
 
 const currentChat =
-  localStorage.getItem("currentChat");
+  localStorage.getItem(
+    "currentChat"
+  );
 
 const chat =
   chats[currentChat];
@@ -16,9 +18,13 @@ document.getElementById(
 function renderMessages() {
 
   const messagesDiv =
-    document.getElementById("messages");
+    document.getElementById(
+      "messages"
+    );
 
   messagesDiv.innerHTML = "";
+
+  if (!chat.messages) return;
 
   chat.messages.forEach(msg => {
 
@@ -26,11 +32,12 @@ function renderMessages() {
       document.createElement("div");
 
     div.className =
-  `message ${
-    msg.sender === "me"
-    ? "sent"
-    : "received"
-  }`;
+      `message ${
+        msg.sender === "me"
+        ? "sent"
+        : "received"
+      }`;
+
     div.innerHTML = `
 
       <div>
@@ -39,26 +46,25 @@ function renderMessages() {
 
       <div class="message-footer">
 
-  <span class="message-time">
-    ${msg.time}
-  </span>
+        <span class="message-time">
+          ${msg.time}
+        </span>
 
-  ${
-    msg.sender === "me"
-    ?
-    `<span class="message-status ${msg.status}">
-      ${
-        msg.status === "sent"
-        ? "•"
-        :
-        "••"
-      }
-    </span>`
-    :
-    ""
-  }
+        ${
+          msg.sender === "me"
+          ?
+          `<span class="message-status ${msg.status}">
+            ${
+              msg.status === "sent"
+              ? "•"
+              : "••"
+            }
+          </span>`
+          :
+          ""
+        }
 
-</div>
+      </div>
 
     `;
 
@@ -86,15 +92,17 @@ function getTime() {
 }
 
 function sendMessage() {
+
   if (!chat.canReply) {
 
-  alert(
-    "You cannot reply to this contact."
-  );
+    alert(
+      "You cannot reply to this contact."
+    );
 
-  return;
+    return;
 
   }
+
   const input =
     document.getElementById(
       "messageInput"
@@ -108,8 +116,12 @@ function sendMessage() {
   chat.messages.push({
 
     text: text,
-    type: "sent",
-    time: getTime()
+
+    sender: "me",
+
+    time: getTime(),
+
+    status: "sent"
 
   });
 
@@ -132,30 +144,3 @@ function goBack() {
 }
 
 renderMessages();
-function setMessageType(type) {
-
-  currentType = type;
-
-  document
-    .getElementById("sentBtn")
-    .classList.remove("active");
-
-  document
-    .getElementById("receivedBtn")
-    .classList.remove("active");
-
-  if (type === "sent") {
-
-    document
-      .getElementById("sentBtn")
-      .classList.add("active");
-
-  } else {
-
-    document
-      .getElementById("receivedBtn")
-      .classList.add("active");
-
-  }
-
-}
