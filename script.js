@@ -1,3 +1,4 @@
+
 let chats =
   JSON.parse(localStorage.getItem("chats"));
 
@@ -53,16 +54,25 @@ function saveChats() {
 function renderChats() {
 
   const chatList =
-    document.getElementById("chatList");
+    document.getElementById(
+      "chatList"
+    );
+
+  if (!chatList) return;
 
   chatList.innerHTML = "";
 
   chats.forEach((chat, index) => {
 
-    let lastMessage = "No messages yet";
+    let lastMessage =
+      "No messages yet";
+
     let lastTime = "";
 
-    if (chat.messages.length > 0) {
+    if (
+      chat.messages &&
+      chat.messages.length > 0
+    ) {
 
       const last =
         chat.messages[
@@ -71,6 +81,7 @@ function renderChats() {
 
       lastMessage = last.text;
       lastTime = last.time;
+
     }
 
     const div =
@@ -81,7 +92,7 @@ function renderChats() {
     div.innerHTML = `
 
       <div class="profile">
-        ${chat.name[0].toUpperCase()}
+        ${chat.name[0]}
       </div>
 
       <div class="chat-content">
@@ -115,6 +126,7 @@ function renderChats() {
 
       window.location.href =
         "chat.html";
+
     };
 
     chatList.appendChild(div);
@@ -123,29 +135,15 @@ function renderChats() {
 
 }
 
-function addChat() {
-
-  const name =
-    prompt("Contact name");
-
-  if (!name) return;
-
-  chats.push({
-    name: name,
-    messages: []
-  });
-
-  saveChats();
-
-  renderChats();
-
-}
-
 function toggleMenu() {
 
   document
-    .getElementById("dropdownMenu")
-    .classList.toggle("hidden");
+    .getElementById(
+      "dropdownMenu"
+    )
+    .classList.toggle(
+      "hidden"
+    );
 
 }
 
