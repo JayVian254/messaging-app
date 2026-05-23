@@ -1,4 +1,3 @@
-
 let chats =
   JSON.parse(localStorage.getItem("chats"))
   || [];
@@ -14,6 +13,15 @@ const chat =
 document.getElementById(
   "chatName"
 ).innerText = chat.name;
+
+function saveChats() {
+
+  localStorage.setItem(
+    "chats",
+    JSON.stringify(chats)
+  );
+
+}
 
 function renderMessages() {
 
@@ -125,10 +133,7 @@ function sendMessage() {
 
   });
 
-  localStorage.setItem(
-    "chats",
-    JSON.stringify(chats)
-  );
+  saveChats();
 
   input.value = "";
 
