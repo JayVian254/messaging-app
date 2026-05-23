@@ -117,18 +117,21 @@ function injectMessage() {
 
     });
 
+  chats[selectedChat]
+    .unreadCount++;
+
   localStorage.setItem(
     "chats",
     JSON.stringify(chats)
   );
 
-  document.getElementById(
-    "incomingMessage"
-  ).value = "";
-
   alert(
     "Message injected successfully."
   );
+
+  document.getElementById(
+    "incomingMessage"
+  ).value = "";
 
 }
 
