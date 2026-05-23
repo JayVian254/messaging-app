@@ -26,7 +26,7 @@ function loadContacts() {
 
 }
 
-function getTime() {
+function getCurrentTime() {
 
   const now = new Date();
 
@@ -40,42 +40,83 @@ function getTime() {
 
 }
 
-function sendIncomingMessage() {
+function getCustomTime() {
 
-  const messageInput =
+  const customTime =
     document.getElementById(
-      "incomingMessage"
-    );
+      "customTime"
+    ).value;
 
-  const text =
-    messageInput.value.trim();
+  if (!customTime) {
 
-  if (!text) return;
+    return getCurrentTime();
+
+  }
+
+  let [hour, minute] =
+    customTime.split(":");
+
+  hour = Number(hour);
+
+  const suffix =
+    hour >= 12
+    ? "PM"
+    : "AM";
+
+  hour =
+    hour % 12 || 12;
+
+  return `${hour}:${minute} ${suffix}`;
+
+}
+
+function injectMessage() {
 
   const selectedChat =
     contactSelect.value;
 
-  chats[selectedChat].messages.push({
+  const messageText =
+    document.getElementById(
+      "incomingMessage"
+    ).value.trim();
 
-    text: text,
+  if (!messageText) return;
 
-    type: "received",
+  const timeMode =
+    document.querySelector(
+      'input[name=\"timeMode\"]:checked'
+    ).value;
 
-    time: getTime(),
+  const finalTime =
+    timeMode === "current"
+    ? getCurrentTime()
+    : getCustomTime();
 
-    status: "delivered"
+  chats[selectedChat]
+    .messages
+    .push({
 
-  });
+      text: messageText,
+
+      sender: "them",
+
+      time: finalTime,
+
+      status: "delivered"
+
+    });
 
   localStorage.setItem(
     "chats",
     JSON.stringify(chats)
   );
 
-  messageInput.value = "";
+  document.getElementById(
+    "incomingMessage"
+  ).value = "";
 
   alert(
-    "Incoming message injected."
+    "Message injected successfully."
   );
 
 }
