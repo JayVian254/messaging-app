@@ -1,4 +1,4 @@
-
+localStorage.clear();
 let chats =
   JSON.parse(localStorage.getItem("chats"));
 
@@ -11,7 +11,12 @@ if (!chats) {
 
       canReply: false,
 
+      pinned: true,
+
+      unreadCount: 1,
+
       messages: [
+
         {
           text:
             "Welcome to MPESA.",
@@ -22,7 +27,9 @@ if (!chats) {
 
           status: "delivered"
         }
+
       ]
+
     },
 
     {
@@ -30,7 +37,12 @@ if (!chats) {
 
       canReply: true,
 
+      pinned: false,
+
+      unreadCount: 0,
+
       messages: []
+
     }
 
   ];
@@ -84,6 +96,25 @@ function renderChats() {
 
     }
 
+    const unreadBadge =
+      chat.unreadCount > 0
+      ?
+      `<div class="unread-badge">
+        ${chat.unreadCount}
+      </div>`
+      :
+      "";
+
+    const pinned =
+      chat.pinned
+      ? "📌 "
+      : "";
+
+    const verified =
+      chat.name === "MPESA"
+      ? " ✓"
+      : "";
+
     const div =
       document.createElement("div");
 
@@ -100,7 +131,9 @@ function renderChats() {
         <div class="chat-top">
 
           <div class="chat-name">
+            ${pinned}
             ${chat.name}
+            ${verified}
           </div>
 
           <div class="chat-time">
@@ -109,8 +142,14 @@ function renderChats() {
 
         </div>
 
-        <div class="last-message">
-          ${lastMessage}
+        <div class="chat-bottom">
+
+          <div class="last-message">
+            ${lastMessage}
+          </div>
+
+          ${unreadBadge}
+
         </div>
 
       </div>
@@ -118,6 +157,10 @@ function renderChats() {
     `;
 
     div.onclick = () => {
+
+      chat.unreadCount = 0;
+
+      saveChats();
 
       localStorage.setItem(
         "currentChat",
