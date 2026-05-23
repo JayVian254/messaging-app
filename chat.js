@@ -86,7 +86,15 @@ function getTime() {
 }
 
 function sendMessage() {
+  if (!chat.canReply) {
 
+  alert(
+    "You cannot reply to this contact."
+  );
+
+  return;
+
+  }
   const input =
     document.getElementById(
       "messageInput"
